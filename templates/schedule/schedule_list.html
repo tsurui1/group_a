@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'schedule/base.html' %}
 
 {% block content %}
 <h1>タイムスケジュール画面</h1>
@@ -11,7 +11,7 @@
                 <p>場所：{{ schedule.place | urlize }}</p>
                 <p>予算：{{ schedule.budget }}</p>
                 {% if schedule.image %}
-                    <p>画像:</p><img src="{{ schedule.image.url }}">
+                    <p>画像:</p><img class='schedule_img' src="{{ schedule.image.url }}">
                 {% endif %}
                 {% if schedule.memo %}
                     <p>メモ：{{ schedule.memo | linebreaksbr | urlize }}</p>
