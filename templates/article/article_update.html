@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<h1>更新</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" id="save" value="更新">
+</form>
+
+<p><a href="{% url 'article:article_detail' article.id %}">戻る</a></p>
+ 
+{% endblock %}

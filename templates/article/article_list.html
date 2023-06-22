@@ -1,13 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<p><a href="{% url 'article:article_create' %}">作成</a></p>
+
+<h1>記事一覧</h1>
+
+<form method="GET">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">送信</button>
+</form>
 
 {% for article in article_list %}
     {% if article.state_flag %}
-        <p>
+        <a href="{% url 'article:article_detail' article.id %}">
+            <img src="{{ article.image.url }}" />
+        </a>
+        <div>
             {{ article.title }}
-        </p>
+            /<a href="{% url 'article:article_detail' article.id %}">詳細</a>
+            /<a href="{% url 'article:article_delete' article.id %}">削除</a>
+        </div>
     {% endif %}
+
 {% endfor %}
 
 {% endblock %}

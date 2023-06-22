@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url 'article:article_detail' article.id %}">
+    <img src="{{ article.image.url }}" />
+</a>
+
+<h1>{{ article.title }}</h1>
+
+<p>掲載日：{{ article.date_begin }}</p>
+<p>
+    {% for category in article.categories.all %}
+    {{ category.name }}
+    {% endfor %}
+</p>
+
+<hr>
+
+<p>{{ article.text | linebreaks | urlize }}</p>
+
+<hr>
+
+<p><a href="{% url 'article:article_update' article.id %}">更新</a></p>
+<p><a href="{% url 'article:article_list' %}">戻る</a></p>
+
+{% endblock %}

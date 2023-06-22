@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="post">
+  {% csrf_token %}
+  <p>"{{ object }}"を削除してもよろしいですか?</p>
+  <input type="submit" value="削除">
+</form>
+
+<hr>
+<div>
+    <a href="{% url 'article:article_list' %}">戻る</a>
+</div>
+ 
+{% endblock %}
