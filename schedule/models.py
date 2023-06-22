@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator
 
 
 class Duration(models.Model):
-    duration     = models.DateField('期間', null=True, blank=True)
+    duration     = models.DateField('期間', unique=True, null=True)
 
     def __str__(self):
         return self.duration
