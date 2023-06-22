@@ -8,11 +8,11 @@
             <div>
                 <p>{{ schedule.datetime | date:"m/d H:i"}}</p>
                 <p>{{ schedule.title }}</p>
+                {% if schedule.image %}
+                    <img class='schedule_img' src="{{ schedule.image.url }}">
+                {% endif %}
                 <p>場所：{{ schedule.place | urlize }}</p>
                 <p>予算：{{ schedule.budget }}</p>
-                {% if schedule.image %}
-                    <p>画像:</p><img class='schedule_img' src="{{ schedule.image.url }}">
-                {% endif %}
                 {% if schedule.memo %}
                     <p>メモ：{{ schedule.memo | linebreaksbr | urlize }}</p>
                 {% endif %}

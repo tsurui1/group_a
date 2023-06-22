@@ -8,6 +8,7 @@ from .forms import ScheduleForm
 class ScheduleListView(generic.ListView):
     model = Schedule
     template_name = 'schedule/schedule_list.html'
+    queryset = Schedule.objects.all().order_by('datetime')
 
 
 class ScheduleCreateView(generic.CreateView):
