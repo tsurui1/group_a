@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for article in article_list %}
+    {% if article.state_flag %}
+        <p>
+            {{ article.title }}
+        </p>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
