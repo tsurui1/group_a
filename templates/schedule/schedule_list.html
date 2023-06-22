@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<h1>タイムスケジュール画面</h1>
+{% for schedule in schedule_list %}
+    <div>
+        <p>{{ schedule.name }}</p>
+    </div>
+{% endfor %}
 {% endblock %}
 
 
