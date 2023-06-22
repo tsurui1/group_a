@@ -3,11 +3,29 @@
 {% block content %}
 <h1>タイムスケジュール画面</h1>
 {% for schedule in schedule_list %}
-    <div>
-        <p>{{ schedule.name }}</p>
-    </div>
+    <ul>
+        <li>
+            <div>
+                <p>{{ schedule.datetime | date:"m/d H:i"}}</p>
+                <p>{{ schedule.title }}</p>
+                <p>場所：{{ schedule.place | urlize }}</p>
+                <p>予算：{{ schedule.budget }}</p>
+                {% if schedule.image %}
+                    <p>画像:</p><img src="{{ schedule.image.url }}">
+                {% endif %}
+                {% if schedule.memo %}
+                    <p>メモ：{{ schedule.memo | linebreaksbr | urlize }}</p>
+                {% endif %}
+            </div>
+        </li>
+    </ul>
+<hr>
 {% endfor %}
 {% endblock %}
 
 
-
+place          = models.CharField('場所', max_length=255)
+    datetime       = models.DateTimeField('日時', null=True, blank=True)
+    memo           = models.TextField('メモ', null=True, blank=True)
+    image          = models.ImageField('画像', null=True, blank=True, upload_to='schedule_images/')
+    budget
