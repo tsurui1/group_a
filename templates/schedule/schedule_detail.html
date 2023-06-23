@@ -1,0 +1,32 @@
+{% extends 'schedule/base.html' %}
+
+{% block content %}
+<h1>タイムスケジュール</h1>
+<h2>旅行名：{{ schedule.title }}</h2>
+期間：
+{{ schedule.duration_begin | date:"m/d" }} ~
+{{ schedule.duration_end | date:"m/d" }}
+<p>合計予算：{{ schedule.total_budget }} 円</p>
+<a href="{% url 'schedule:plan_create' %}">プランの追加</a>
+<hr>
+{% for plan in schedule.plan_set.all %}
+    <ul>
+        <li>
+            <div>
+                <p>{{ plan.datetime | date:"m/d H:i" }}</p>
+                <p>{{ plan.place | urlize }}</p>
+                <p>{{ plan.title }}</p>
+                {% if plan.image %}
+                    <img src="{{ plan.image.url }}">
+                {% endif %}
+                <p>{{ plan.budget }} 円</p>
+                {% if plan.memo %}
+                    <p>{{ plan.memo | linebreaksbr | urlize }}</p>
+                {% endif %}
+            </div>
+        </li>
+    </ul>
+<hr>
+{% endfor %}
+{% endblock %}
+
