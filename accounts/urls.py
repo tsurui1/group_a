@@ -10,4 +10,5 @@ urlpatterns = [
     path('logout/', Logout.as_view(), name='logout'),
 
     path('page/', MyPageView.as_view(), name='my_page'),
+    path('update/', MyPageUpdateView.as_view(), name='my_page_update'),
 ]

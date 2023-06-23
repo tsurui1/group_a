@@ -10,3 +10,8 @@ class CustomUserForm(UserCreationForm):
         widgets = {
             'birthday': forms.NumberInput(attrs={"type": "date"}),
         }
+
+class UpdateForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ('bio', 'username')

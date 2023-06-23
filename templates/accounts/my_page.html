@@ -5,9 +5,11 @@
 {% if request.user.bio %}
   <img width="300" src="{{ user.bio.url }}" />
 {% else %}
-  <img width="300" src="/media/accounts/user.png">
+  <img width="300" src="/media/accounts_images/user.png">
 {% endif %}
 
 {{ user.username }}
+
+<a href="{% url 'accounts:my_page_update' %}">マイページを編集する</a>
 
 {% endblock %}
