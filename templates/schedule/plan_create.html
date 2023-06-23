@@ -1,0 +1,11 @@
+{% extends 'schedule/base.html' %}
+
+{% block content %}
+<h1>プラン入力ページ</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" id="save" value="作成">
+</form>
+
+{% endblock %}

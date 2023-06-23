@@ -2,13 +2,12 @@ from django.shortcuts import redirect, render
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Schedule
-from .forms import ScheduleForm
+from .forms import ScheduleForm, PlanForm
 
 
-class ScheduleListView(generic.ListView):
+class ScheduleListView(generic.DetailView):
     model = Schedule
     template_name = 'schedule/schedule_list.html'
-    queryset = Schedule.objects.all().order_by('datetime')
 
 
 class ScheduleCreateView(generic.CreateView):
@@ -16,3 +15,10 @@ class ScheduleCreateView(generic.CreateView):
     form_class = ScheduleForm
     template_name = 'schedule/schedule_create.html'
     success_url = reverse_lazy('schedule:schedule_create')
+
+
+class PlanCreateView(generic.CreateView):
+    model = Schedule
+    form_class = PlanForm
+    template_name = 'schedule/plan_create.html'
+    success_url = reverse_lazy('schedule:schedule_list')

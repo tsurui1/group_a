@@ -1,18 +1,11 @@
 from django import forms
-from .models import Schedule
+from .models import Schedule, Plan
 
 
 class ScheduleForm(forms.ModelForm):
-    datetime = forms.SplitDateTimeField(
-        label='日時',
-        required=False,
-        widget=forms.SplitDateTimeWidget(date_attrs={'type': 'date'}, time_attrs={'type': 'time'})
-    )
-
     class Meta:
         model = Schedule
-        # fields = ('title', 'duration_begin', 'duration_end', 'datetime', 'place', 'memo', 'image', 'budget', )
-        fields = '__all__'
+        fields = ('title', 'duration_begin', 'duration_end', 'total_budget',)
         widgets = {
             'duration_begin': forms.NumberInput(attrs={
                 "type": "date"
@@ -21,3 +14,15 @@ class ScheduleForm(forms.ModelForm):
                 "type": "date"
             })
         }
+
+
+class PlanForm(forms.ModelForm):
+    datetime = forms.SplitDateTimeField(
+        label='日時',
+        required=False,
+        widget=forms.SplitDateTimeWidget(date_attrs={'type': 'date'}, time_attrs={'type': 'time'})
+    )
+
+    class Meta:
+        model = Plan
+        fields = ('datetime', 'image', 'place', 'budget', 'memo', 'schedule')

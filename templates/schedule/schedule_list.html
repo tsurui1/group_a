@@ -2,19 +2,26 @@
 
 {% block content %}
 <h1>タイムスケジュール画面</h1>
-{% for schedule in schedule_list %}
+<h2>旅行名：{{ schedule.title }}</h2>
+期間：
+{{ schedule.duration_begin | date:"m/d" }}
+{{ schedule.duration_end | date:"m/d" }}
+<p>合計予算：{{ schedule.total_budget }}</p>
+<hr>
+
+{% for plan in schedule.plan_set.all %}
     <ul>
         <li>
             <div>
-                <p>{{ schedule.datetime | date:"m/d H:i"}}</p>
-                <p>{{ schedule.title }}</p>
-                {% if schedule.image %}
-                    <img class='schedule_img' src="{{ schedule.image.url }}">
+                <p>{{ plan.datetime | date:"m/d H:i" }}</p>
+                <p>目的：{{ plan.place | urlize }}</p>
+                <p>{{ plan.title }}</p>
+                {% if plan.image %}
+                    <img src="{{ plan.image.url }}">
                 {% endif %}
-                <p>場所：{{ schedule.place | urlize }}</p>
-                <p>予算：{{ schedule.budget }}</p>
-                {% if schedule.memo %}
-                    <p>メモ：{{ schedule.memo | linebreaksbr | urlize }}</p>
+                <p>予算：{{ plan.budget }}</p>
+                {% if plan.memo %}
+                    <p>メモ：{{ plan.memo | linebreaksbr | urlize }}</p>
                 {% endif %}
             </div>
         </li>
@@ -23,9 +30,3 @@
 {% endfor %}
 {% endblock %}
 
-
-place          = models.CharField('場所', max_length=255)
-    datetime       = models.DateTimeField('日時', null=True, blank=True)
-    memo           = models.TextField('メモ', null=True, blank=True)
-    image          = models.ImageField('画像', null=True, blank=True, upload_to='schedule_images/')
-    budget
