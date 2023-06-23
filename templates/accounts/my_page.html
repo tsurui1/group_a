@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>マイページ</h1>
+{% if request.user.bio %}
+  <img width="300" src="{{ user.bio.url }}" />
+{% else %}
+  <img width="300" src="/media/accounts/user.png">
+{% endif %}
+
+{{ user.username }}
+
+{% endblock %}

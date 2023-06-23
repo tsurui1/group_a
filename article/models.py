@@ -9,7 +9,7 @@ class Category(models.Model):
 
 class Article(models.Model):
     title = models.CharField('タイトル', max_length=100)
-    image = models.ImageField('画像')
+    image = models.ImageField('画像', upload_to='article_images/')
     text = models.TextField('テキスト')
     date_begin = models.DateField('掲載開始日', blank=True, null=True)
     date_end = models.DateField('掲載終了日', blank=True, null=True)
