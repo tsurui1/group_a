@@ -25,4 +25,6 @@ class PlanForm(forms.ModelForm):
 
     class Meta:
         model = Plan
-        fields = ('datetime', 'image', 'place', 'budget', 'memo', 'schedule')
+        fields = ('datetime', 'image', 'place', 'budget', 'memo')
+
+

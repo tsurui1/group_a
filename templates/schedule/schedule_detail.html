@@ -7,7 +7,9 @@
 {{ schedule.duration_begin | date:"m/d" }} ~
 {{ schedule.duration_end | date:"m/d" }}
 <p>合計予算：{{ schedule.total_budget }} 円</p>
-<a href="{% url 'schedule:plan_create' %}">プランの追加</a>
+{{ test }}
+
+<a href="{% url 'schedule:plan_create' schedule.pk %}">プランの追加</a>
 <hr>
 {% for plan in schedule.plan_set.all %}
     <ul>
@@ -26,7 +28,8 @@
             </div>
         </li>
     </ul>
+<a href="{% url 'schedule:plan_update' plan.pk %}">更新</a>
+<a href="{% url 'schedule:plan_delete' plan.pk %}">削除</a>
 <hr>
 {% endfor %}
 {% endblock %}
-

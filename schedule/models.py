@@ -8,6 +8,9 @@ class Schedule(models.Model):
     duration_end   = models.DateField('期間終了日', null=True, blank=True)
     total_budget   = models.PositiveIntegerField('予算合計', null=True, blank=True, validators=[MaxValueValidator(1000000000)])
 
+    class Meta:
+        ordering = ['duration_begin']
+
     def __str__(self):
         return self.title
 
@@ -19,6 +22,9 @@ class Plan(models.Model):
     memo     = models.TextField('メモ', null=True, blank=True)
     image    = models.ImageField('画像', null=True, blank=True, upload_to='plan_images/')
     budget   = models.PositiveIntegerField('予算', validators=[MaxValueValidator(1000000000)])
+
+    class Meta:
+        ordering = ['datetime']
 
     def __str__(self):
         return self.place

@@ -9,7 +9,9 @@
     {{ schedule.duration_begin | date:"m/d" }} ~
     {{ schedule.duration_end | date:"m/d" }}
     <p>合計予算：{{ schedule.total_budget }} 円</p>
-
+<a href="{% url 'schedule:schedule_update' schedule.pk %}">更新</a>
+<a href="{% url 'schedule:schedule_delete' schedule.pk %}">削除</a>
+<hr>
 {% endfor %}
 {% endblock %}
 

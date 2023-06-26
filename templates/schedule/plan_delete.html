@@ -1,0 +1,10 @@
+{% extends 'schedule/base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <p>"{{ plan.place }}"を削除してもよろしいですか?</p>
+    <input type="submit" value="削除">
+</form>
+
+{% endblock %}
