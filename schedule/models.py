@@ -1,12 +1,13 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
+from accounts.models import CustomUser
 
 
 class Schedule(models.Model):
     title          = models.CharField('タイトル', max_length=255)
     duration_begin = models.DateField('期間開始日', null=True, blank=True)
     duration_end   = models.DateField('期間終了日', null=True, blank=True)
-    total_budget   = models.PositiveIntegerField('予算合計', null=True, blank=True, validators=[MaxValueValidator(1000000000)])
+    users = models.ManyToManyField(CustomUser, blank=True)
 
     class Meta:
         ordering = ['duration_begin']

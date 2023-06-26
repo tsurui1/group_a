@@ -9,6 +9,7 @@ from django.db.models import Sum
 class ScheduleListView(generic.ListView):
     model = Schedule
     template_name = 'schedule/schedule_list.html'
+    queryset = Schedule.objects.all().annotate(sum=Sum('plan__budget'))
 
 
 class ScheduleCreateView(generic.CreateView):
@@ -37,7 +38,9 @@ class ScheduleDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['total_budget'] = Plan.objects.aggregate(Sum('budget'))['budget__sum']
+        context['total_budget'] = Plan.objects.filter(
+            schedule=Schedule.objects.get(pk=self.kwargs['pk'])
+        ).aggregate(Sum('budget'))['budget__sum']
         return context
 
 
