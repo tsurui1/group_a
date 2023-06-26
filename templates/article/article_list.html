@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'article/base_article.html' %}
 
 {% block content %}
 <p><a href="{% url 'article:article_create' %}">作成</a></p>
@@ -14,7 +14,7 @@
 {% for article in article_list %}
     {% if article.state_flag %}
         <a href="{% url 'article:article_detail' article.id %}">
-            <img src="{{ article.image.url }}" />
+            <img width="300" src="{{ article.image.url }}" />
         </a>
         <div>
             {{ article.title }}
