@@ -67,6 +67,8 @@ class ArticleCreateView(generic.CreateView):
 
         return redirect('article:article_list')
 
+
+
 class ArticleDetailView(generic.DetailView):
     model = Article
     template_name = 'article/article_detail.html'
@@ -102,6 +104,13 @@ class ArticleUpdateView(generic.UpdateView):
                     article.categories.add(add_category)
 
         return redirect('article:article_list')
+
+    def get_initial(self):
+        categories = ''
+        for category in self.object.categories.all():
+            categories += f',{category.name}'
+        initial_dict = {'categories': categories}
+        return initial_dict
 
 class ArticleDeleteView(generic.DeleteView):
     model = Article

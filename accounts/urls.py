@@ -11,4 +11,6 @@ urlpatterns = [
 
     path('page/', MyPageView.as_view(), name='my_page'),
     path('update/', MyPageUpdateView.as_view(), name='my_page_update'),
+
+    # path('management/', ManagementCreateView.as_view(), name='')
 ]
