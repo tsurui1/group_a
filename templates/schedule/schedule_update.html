@@ -1,7 +1,7 @@
 {% extends 'schedule/base.html' %}
 
 {% block content %}
-<h2>プラン更新ページ</h2>
+<h2>{{ schedule.title }}更新ページ</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}

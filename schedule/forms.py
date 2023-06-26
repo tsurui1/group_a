@@ -5,7 +5,7 @@ from .models import Schedule, Plan
 class ScheduleForm(forms.ModelForm):
     class Meta:
         model = Schedule
-        fields = ('title', 'duration_begin', 'duration_end', 'total_budget',)
+        fields = ('title', 'duration_begin', 'duration_end')
         widgets = {
             'duration_begin': forms.NumberInput(attrs={
                 "type": "date"

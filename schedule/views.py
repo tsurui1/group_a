@@ -35,9 +35,10 @@ class ScheduleDetailView(generic.DetailView):
     model = Schedule
     template_name = 'schedule/schedule_detail.html'
 
-
-    # a=Plan.objects.aggregate(Sum('budget'))
-    # print(a)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['total_budget'] = Plan.objects.aggregate(Sum('budget'))['budget__sum']
+        return context
 
 
 class PlanCreateView(generic.CreateView):
