@@ -1,1 +1,126 @@
-[{"model": "article.category", "pk": 1, "fields": {"name": "カテゴリA"}}, {"model": "article.article", "pk": 1, "fields": {"title": "記事１", "image": "article_images/water-1018808_1280_A2NKUji.jpg", "text": "テキスト１更新済み", "date_begin": "2023-06-22", "date_end": "2023-06-28", "state_flag": true, "categories": [1]}}, {"model": "article.article", "pk": 2, "fields": {"title": "記事２", "image": "article_images/neko1.jpg", "text": "テ\r\nキ\r\nス\r\nト\r\n２", "date_begin": "2023-06-23", "date_end": "2023-06-25", "state_flag": true, "categories": [1]}}, {"model": "article.article", "pk": 3, "fields": {"title": "記事３", "image": "article_images/beach-2179183_640.jpg", "text": "テキスト３", "date_begin": "2023-06-28", "date_end": "2023-06-30", "state_flag": true, "categories": []}}, {"model": "article.article", "pk": 4, "fields": {"title": "あ", "image": "article_images/tree-838667_640.jpg", "text": "あ", "date_begin": "2023-06-25", "date_end": "2023-06-28", "state_flag": true, "categories": []}}, {"model": "article.article", "pk": 5, "fields": {"title": "え", "image": "article_images/ocean-1867285_1280.jpg", "text": "え", "date_begin": "2023-06-20", "date_end": "2023-06-30", "state_flag": true, "categories": []}}, {"model": "accounts.customuser", "pk": 1, "fields": {"password": "pbkdf2_sha256$600000$FLeNPoYCpTdIQyhgJL4HXB$r1rIIrkH+ChVEIJKeMRZxPJfUeMfD+MYwaDxsRwsxMo=", "last_login": "2023-06-26T01:52:21.332Z", "is_superuser": true, "username": "admin", "first_name": "", "last_name": "", "email": "a@a.com", "is_staff": true, "is_active": true, "date_joined": "2023-06-22T05:27:44Z", "bio": "", "birthday": null, "groups": [], "user_permissions": []}}, {"model": "accounts.customuser", "pk": 2, "fields": {"password": "pbkdf2_sha256$600000$a1FnQrhQBsnrJDcWfC86io$bqu2aMZepq/abqeblcWWfJn8kHt9Oz2c2M21e8WUItY=", "last_login": "2023-06-23T01:58:16.380Z", "is_superuser": false, "username": "tsurui-0827", "first_name": "つるい", "last_name": "みう", "email": "", "is_staff": false, "is_active": true, "date_joined": "2023-06-23T01:04:30.915Z", "bio": "accounts_images/neko-user_KIqBgft.jpg", "birthday": "2000-08-27", "groups": [], "user_permissions": []}}, {"model": "sessions.session", "pk": "t86klzxocow0vm3b8e0c6jjxsdxsdaa0", "fields": {"session_data": ".eJxVjEEOwiAQRe_C2pBCYQZcuvcMhIFBqoYmpV0Z765NutDtf-_9lwhxW2vYOi9hyuIslDj9bhTTg9sO8j222yzT3NZlIrkr8qBdXufMz8vh_h3U2Ou39iWCdpBGzaChDGjBjFSQ0KkIxqPL6FFRyeAcaDYDOcvAmJIFb1C8P8bZNxs:1qDbOv:_06ZPHz9ieyj2302xTZ_7ALD5zFZn3fLJ1Eh4510rfk", "expire_date": "2023-07-10T01:52:21.343Z"}}]
+[
+  {
+    "model": "article.category",
+    "pk": 1,
+    "fields": {
+      "name": "カテゴリA"
+    }
+  },
+  {
+    "model": "article.article",
+    "pk": 1,
+    "fields": {
+      "title": "記事１",
+      "image": "article_images/water-1018808_1280_A2NKUji.jpg",
+      "text": "テキスト１更新済み",
+      "date_begin": "2023-06-22",
+      "date_end": "2023-06-28",
+      "state_flag": true,
+      "categories": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "article.article",
+    "pk": 2,
+    "fields": {
+      "title": "記事２",
+      "image": "article_images/neko1.jpg",
+      "text": "テ\r\nキ\r\nス\r\nト\r\n２",
+      "date_begin": "2023-06-23",
+      "date_end": "2023-06-25",
+      "state_flag": true,
+      "categories": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "article.article",
+    "pk": 3,
+    "fields": {
+      "title": "記事３",
+      "image": "article_images/beach-2179183_640.jpg",
+      "text": "テキスト３",
+      "date_begin": "2023-06-28",
+      "date_end": "2023-06-30",
+      "state_flag": true,
+      "categories": []
+    }
+  },
+  {
+    "model": "article.article",
+    "pk": 4,
+    "fields": {
+      "title": "あ",
+      "image": "article_images/tree-838667_640.jpg",
+      "text": "あ",
+      "date_begin": "2023-06-25",
+      "date_end": "2023-06-28",
+      "state_flag": true,
+      "categories": []
+    }
+  },
+  {
+    "model": "article.article",
+    "pk": 5,
+    "fields": {
+      "title": "え",
+      "image": "article_images/ocean-1867285_1280.jpg",
+      "text": "え",
+      "date_begin": "2023-06-20",
+      "date_end": "2023-06-30",
+      "state_flag": true,
+      "categories": []
+    }
+  },
+  {
+    "model": "accounts.customuser",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$FLeNPoYCpTdIQyhgJL4HXB$r1rIIrkH+ChVEIJKeMRZxPJfUeMfD+MYwaDxsRwsxMo=",
+      "last_login": "2023-06-26T01:52:21.332Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "a@a.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-06-22T05:27:44Z",
+      "bio": "",
+      "birthday": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.customuser",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$a1FnQrhQBsnrJDcWfC86io$bqu2aMZepq/abqeblcWWfJn8kHt9Oz2c2M21e8WUItY=",
+      "last_login": "2023-06-23T01:58:16.380Z",
+      "is_superuser": false,
+      "username": "tsurui-0827",
+      "first_name": "つるい",
+      "last_name": "みう",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-23T01:04:30.915Z",
+      "bio": "accounts_images/neko-user_KIqBgft.jpg",
+      "birthday": "2000-08-27",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "t86klzxocow0vm3b8e0c6jjxsdxsdaa0",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2pBCYQZcuvcMhIFBqoYmpV0Z765NutDtf-_9lwhxW2vYOi9hyuIslDj9bhTTg9sO8j222yzT3NZlIrkr8qBdXufMz8vh_h3U2Ou39iWCdpBGzaChDGjBjFSQ0KkIxqPL6FFRyeAcaDYDOcvAmJIFb1C8P8bZNxs:1qDbOv:_06ZPHz9ieyj2302xTZ_7ALD5zFZn3fLJ1Eh4510rfk",
+      "expire_date": "2023-07-10T01:52:21.343Z"
+    }
+  }
+]

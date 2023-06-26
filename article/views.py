@@ -79,6 +79,30 @@ class ArticleUpdateView(generic.UpdateView):
     def get_success_url(self):
         return resolve_url('article:article_detail', pk=self.kwargs['pk'])
 
+    def form_valid(self, form):
+        article = form.save(commit=False)
+
+        article.user = self.request.user
+
+        text = self.request.POST['categories']
+        # text = article.categories
+        text_list = text.split(',')
+
+        article.save()
+
+        for category in text_list:
+            print(category)
+            if category.startswith(','):
+                if Category.objects.filter(name=category).exists():
+                    add_category = Category.objects.filter(name=category).first()
+                    article.categories.add(add_category)
+
+                else:
+                    add_category = Category.objects.create(name=category)
+                    article.categories.add(add_category)
+
+        return redirect('article:article_list')
+
 class ArticleDeleteView(generic.DeleteView):
     model = Article
     template_name = 'article/article_delete.html'
