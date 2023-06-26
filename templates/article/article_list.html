@@ -23,6 +23,8 @@
         </div>
     {% endif %}
 
+{% endfor %}
+
 <div >
     {% if page_obj.has_previous %}
         <a href="?page={{ page_obj.previous_page_number }}">前のページへ</a>
@@ -40,7 +42,5 @@
         <a href="?page={{ page_obj.next_page_number }}">次のページへ</a>
     {% endif %}
 </div>
-
-{% endfor %}
 
 {% endblock %}

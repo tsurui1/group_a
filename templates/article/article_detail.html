@@ -1,9 +1,9 @@
 {% extends 'article/base_article.html' %}
 
 {% block content %}
-<a href="{% url 'article:article_detail' article.id %}">
-    <img src="{{ article.image.url }}" />
-</a>
+<p><a href="{% url 'article:article_detail' article.id %}">
+    <img width="1000" src="{{ article.image.url }}" />
+</a></p>
 
 <h1>{{ article.title }}</h1>
 

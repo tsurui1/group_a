@@ -36,8 +36,8 @@ class ScheduleDetailView(generic.DetailView):
     template_name = 'schedule/schedule_detail.html'
 
 
-    a=Plan.objects.aggregate(Sum('budget'))
-    print(a)
+    # a=Plan.objects.aggregate(Sum('budget'))
+    # print(a)
 
 
 class PlanCreateView(generic.CreateView):
