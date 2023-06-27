@@ -48,7 +48,7 @@ class ManagementUserCreateView(generic.CreateView):
     model = CustomUser
     form_class = ManagementUserForm
     template_name = 'accounts/management_create.html'
-    success_url = reverse_lazy('article:article_list')
+    next_page = reverse_lazy('article:management_list')
 
 class ManagementUserLoginView(LoginView):
     template_name = 'accounts/management_login.html'
