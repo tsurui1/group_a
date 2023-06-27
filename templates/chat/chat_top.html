@@ -1,0 +1,21 @@
+{% extends 'chat/base.html' %}
+
+{% block content %}
+<h1>チャット画面</h1>
+[{{ chat.groups }}]
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="送信">
+</form>
+<!--チャット表示-->
+{% for chat in chat_list %}
+<div>
+    {{ chat.created_at | date:'Y/m/d G:i:s' }}
+    [{{ chat.user }}]
+    <p>{{ chat.comment | linebreaksbr | urlize }}</p>
+</div>
+<hr>
+{% endfor %}
+<!--/チャット表示-->
+{% endblock %}

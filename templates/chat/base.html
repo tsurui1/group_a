@@ -1,0 +1,13 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'chat/style.css' %}">
+    {% block css %}{% endblock %}
+    <title>しおりんチャット</title>
+</head>
+<body>
+{% block content %}{% endblock %}
+</body>
+</html>
