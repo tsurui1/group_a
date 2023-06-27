@@ -1,10 +1,20 @@
 {% extends 'schedule/base.html' %}
 
 {% block content %}
-<h1>スケジュールリスト</h1>
+<h1>マイページ</h1>
+{% if request.user.bio %}
+  <img width="300" src="{{ user.bio.url }}" />
+{% else %}
+  <img width="300" src="/media/accounts_images/user.png">
+{% endif %}
+{{ user.username }}
+<p><a href="{% url 'accounts:my_page_update' %}">マイページを編集する</a></p>
+<hr>
+<h2>所属するスケジュールリスト</h2>
 <a href="{% url 'schedule:schedule_create' %}">追加</a>
+<hr>
 {% for schedule in schedule_list %}
-    <h2><a href="{% url 'schedule:schedule_detail' schedule.pk %}">旅行名：{{ schedule.title }}</a></h2>
+    <h3><a href="{% url 'schedule:schedule_detail' schedule.pk %}">旅行名：{{ schedule.title }}</a></h3>
     期間：
     {{ schedule.duration_begin | date:"m/d" }} ~
     {{ schedule.duration_end | date:"m/d" }}

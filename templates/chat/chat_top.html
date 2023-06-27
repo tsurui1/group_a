@@ -1,8 +1,7 @@
 {% extends 'chat/base.html' %}
 
 {% block content %}
-<h1>チャット画面</h1>
-[{{ chat.groups }}]
+<h1>[{{ schedule.title }}]チャット画面</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
@@ -13,6 +12,7 @@
 <div>
     {{ chat.created_at | date:'Y/m/d G:i:s' }}
     [{{ chat.user }}]
+    {{ chat.groups }}
     <p>{{ chat.comment | linebreaksbr | urlize }}</p>
 </div>
 <hr>
