@@ -11,6 +11,10 @@ class ScheduleListView(generic.ListView):
     template_name = 'schedule/schedule_list.html'
     queryset = Schedule.objects.all().annotate(sum=Sum('plan__budget'))
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(users=self.request.user)
+        return queryset
 
 class ScheduleCreateView(generic.CreateView):
     model = Schedule

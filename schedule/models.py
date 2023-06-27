@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
 from accounts.models import CustomUser
+from article.models import Category
 
 
 class Schedule(models.Model):
@@ -8,6 +9,7 @@ class Schedule(models.Model):
     duration_begin = models.DateField('期間開始日', null=True, blank=True)
     duration_end   = models.DateField('期間終了日', null=True, blank=True)
     users          = models.ManyToManyField(CustomUser, blank=True)
+    categories     = models.ManyToManyField(Category, blank=True, null=True)
 
     class Meta:
         ordering = ['duration_begin']
