@@ -10,6 +10,19 @@
 
 {{ user.username }}
 
-<a href="{% url 'accounts:my_page_update' %}">マイページを編集する</a>
+<p><a href="{% url 'accounts:my_page_update' %}">マイページを編集する</a></p>
+<p><a href="{% url 'schedule:schedule_create' %}">スケジュールを追加</a></p>
+
+<hr>
+
+{% for schedule in schedule_list %}
+<div>
+  <p>
+    <a href="{% url 'schedule:schedule_detail' schedule.id %}">{{ schedule.title }}</a>
+    {{ schedule.duration_begin }}～{{ schedule.duration_end }}
+  </p>
+</div>
+{% endfor %}
+
 
 {% endblock %}

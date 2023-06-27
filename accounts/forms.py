@@ -15,3 +15,8 @@ class UpdateForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ('bio', 'username')
+
+class ManagementUserForm(UserCreationForm):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'is_staff')

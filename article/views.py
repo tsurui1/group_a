@@ -38,6 +38,11 @@ class ArticleCreateView(generic.CreateView):
     template_name = 'article/article_create.html'
     success_url = reverse_lazy('article:article_list')
 
+    def get(self, request):
+        if not request.user.is_staff:
+            return redirect("accounts:login")
+        return super().get(request)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['category_list'] = Category.objects.all()
@@ -77,9 +82,12 @@ class ArticleUpdateView(generic.UpdateView):
     model = Article
     form_class = ArticleForm
     template_name = 'article/article_update.html'
+    success_url = reverse_lazy('article:management_list')
 
-    def get_success_url(self):
-        return resolve_url('article:article_detail', pk=self.kwargs['pk'])
+    def get(self, request):
+        if not request.user.is_staff:
+            return redirect("accounts:login")
+        return super().get(request)
 
     def form_valid(self, form):
         article = form.save(commit=False)
@@ -103,7 +111,7 @@ class ArticleUpdateView(generic.UpdateView):
                     add_category = Category.objects.create(name=category)
                     article.categories.add(add_category)
 
-        return redirect('article:article_list')
+        return redirect('article:management_list')
 
     def get_initial(self):
         categories = ''
@@ -116,3 +124,24 @@ class ArticleDeleteView(generic.DeleteView):
     model = Article
     template_name = 'article/article_delete.html'
     success_url = reverse_lazy('article:article_list')
+
+    def get(self, request):
+        if not request.user.is_staff:
+            return redirect("accounts:login")
+        return super().get(request)
+
+class ManagementListView(generic.ListView):
+    model = Article
+    template_name = 'article/management_list.html'
+    paginate_by = 4
+
+    def get(self, request):
+        if not request.user.is_staff:
+            return redirect("accounts:login")
+        return super().get(request)
+
+    def get_queryset(self):
+        queryset = Article.objects.order_by('-created_at')
+        queryset = queryset.filter(user=self.request.user)
+
+        return queryset

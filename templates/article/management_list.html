@@ -2,25 +2,19 @@
 
 {% block content %}
 
-<a href="{% url 'article:management_list' %}">テスト</a>
+<p><a href="{% url 'article:article_create' %}">作成</a></p>
 
-<h1>記事一覧</h1>
-
-<form method="GET">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">送信</button>
-</form>
+<h1>運営記事一覧</h1>
 
 {% for article in article_list %}
-    {% if article.state_flag %}
         <a href="{% url 'article:article_detail' article.id %}">
             <img width="300" src="{{ article.image.url }}" />
         </a>
         <div>
             {{ article.title }}
+            /<a href="{% url 'article:article_update' article.id %}">更新</a>
+            /<a href="{% url 'article:article_delete' article.id %}">削除</a>
         </div>
-    {% endif %}
 
 {% endfor %}
 
