@@ -4,18 +4,16 @@
 <div>
     <h1>マイページ</h1>
     {% if request.user.bio %}
-        <img width="300" src="{{ user.bio.url }}" />
+        <img class="user_img" src="{{ user.bio.url }}" />
     {% else %}
-        <img width="300" src="/media/accounts_images/user.png">
+        <img class="user_img" src="/media/accounts_images/user.png">
     {% endif %}
     <p>{{ user.username }}</p>
     <p><a href="{% url 'accounts:my_page_update' %}">マイページを編集する</a></p>
-    <hr>
 </div>
-<div>
-    <h2>所属するスケジュール(全{{ schedule_count }}件)</h2>
-    <a href="{% url 'schedule:schedule_create' %}">追加</a>
-    <hr>
+<div class="all_schedule">
+    所属するスケジュール(全{{ schedule_count }}件)
+    <a class="btn" href="{% url 'schedule:schedule_create' %}">＋</a>
 </div>
 <div>
     {% for schedule in schedule_list %}

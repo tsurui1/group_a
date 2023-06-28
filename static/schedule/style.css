@@ -1,9 +1,53 @@
+/* 共通 */
 * {
     margin: 0;
     padding: 0;
 }
-
 img {
     width: 200px;
     height: auto;
+}
+#menu {
+    color: #fff;
+    background-color: #1e90ff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+#menu a{
+    color: inherit;
+    text-decoration: none;
+}
+#menu a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+nav ul li{
+    display: inline-block;
+    margin: 0 20px;
+}
+.center{
+    width: 80%;
+    margin: auto;
+}
+/* マイページ */
+.user_img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50px;
+}
+.btn {
+  border-radius: 100px;
+  background-color: #1e90ff;
+  padding: 0 5px;
+  text-decoration: none;
+  color: white;
+}
+.all_schedule{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #1e90ff;/*文字色*/
+    background: #FFF;
+    border: solid 3px #1e90ff;/*線*/
+    border-radius: 10px;/*角の丸み*/
 }
