@@ -40,4 +40,40 @@
     {% endif %}
 </div>
 
+<hr>
+<h1>{{ request.user.username }}さんへのおすすめ記事</h1>
+
+{% for category in category_list %}
+    <p>{{ category }}</p>
+    {% for article in category.article_set.all %}
+        {% if article.state_flag %}
+        <a href="{% url 'article:article_detail' article.id %}">
+            <img width="300" src="{{ article.image.url }}" />
+        </a>
+        <div>
+            {{ article.title }}
+        </div>
+        {% endif %}
+    {% endfor %}
+
+{% endfor %}
+
+<div >
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">前のページへ</a>
+    {% endif %}
+
+    {% for link_page in page_obj.paginator.page_range %}
+        {% if link_page == page_obj.number %}
+            <span>{{ link_page }}</span>
+        {% else %}
+            <a href="?page={{ link_page }}">{{ link_page }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">次のページへ</a>
+    {% endif %}
+</div>
+
 {% endblock %}

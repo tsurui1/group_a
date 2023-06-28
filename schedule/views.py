@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from .models import Schedule, Plan
 from .forms import ScheduleForm, PlanForm
 from django.db.models import Sum
+from article.models import Category
 
 
 class ScheduleListView(generic.ListView):
@@ -54,10 +55,32 @@ class PlanCreateView(generic.CreateView):
     template_name = 'schedule/plan_create.html'
     success_url = reverse_lazy('schedule:schedule_list')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_list'] = Category.objects.all()
+        return context
+
     def form_valid(self, form):
         plan = form.save(commit=False)
         plan.schedule = Schedule.objects.get(pk=self.kwargs['pk'])
+
+        plan.user = self.request.user
+
+        category = self.request.POST['categories']
+        category_list = category.split(',')
+
         plan.save()
+
+        for category in category_list:
+            print(category)
+            if Category.objects.filter(name=category).exists():
+                add_category = Category.objects.filter(name=category).first()
+                plan.schedule.categories.add(add_category)
+
+            else:
+                add_category = Category.objects.create(name=category)
+                plan.schedule.categories.add(add_category)
+
         return redirect('schedule:schedule_detail', pk=plan.schedule.pk)
 
 

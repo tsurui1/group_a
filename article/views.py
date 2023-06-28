@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 from .models import Article, Category
 from .forms import ArticleForm, SearchForm
+from schedule.models import Schedule
 import datetime
 
 
@@ -15,6 +16,12 @@ class ArticleListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = SearchForm
+        category_list = Schedule.categories.through.objects.all().values_list('category_id', flat=True)
+        category_list = Category.objects.filter(id__in=category_list)
+        context['category_list'] = category_list
+
+        print(category_list)
+
         return context
 
     def get_queryset(self):
