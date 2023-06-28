@@ -1,7 +1,7 @@
 {% extends 'accounts/base_account.html' %}
 {% block content %}
 
-<h1>ユーザー作成ページ</h1>
+<h1>新規登録</h1>
     <form method="POST">
       {% csrf_token %}
       {{ form.as_p }}

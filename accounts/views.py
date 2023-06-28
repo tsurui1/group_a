@@ -39,7 +39,7 @@ class MyPageUpdateView(generic.UpdateView):
     model = CustomUser
     form_class = UpdateForm
     template_name = 'accounts/update.html'
-    success_url = reverse_lazy('accounts:my_page')
+    success_url = reverse_lazy('schedule:schedule_list')
 
     def get_object(self):
         return self.request.user

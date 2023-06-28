@@ -1,22 +1,29 @@
 {% extends 'article/base_article.html' %}
 
 {% block content %}
-<p><a href="{% url 'article:article_detail' article.id %}">
+<p class="cover"><a href="{% url 'article:article_detail' article.id %}">
     <img width="1000" src="{{ article.image.url }}" />
 </a></p>
 
-<h1>{{ article.title }}</h1>
+<div>
 
-<p>掲載日：{{ article.date_begin }}</p>
-<p>
-    {% for category in article.categories.all %}
-    {{ category.name }}
-    {% endfor %}
-</p>
+    <h1>{{ article.title }}</h1>
+    <div class="info">
+        <p>掲載日：{{ article.date_begin }}</p>
+        <p>
+            {% for category in article.categories.all %}
+            {{ category.name }}
+            {% endfor %}
+        </p>
+    </div>
+
+</div>
 
 <hr>
 
-<p>{{ article.text | linebreaks | urlize }}</p>
+<div>
+    <p>{{ article.text | linebreaks | urlize }}</p>
+</div>
 
 <hr>
 
