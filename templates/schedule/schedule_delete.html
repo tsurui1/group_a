@@ -1,15 +1,10 @@
 {% extends 'schedule/base.html' %}
 
 {% block content %}
-<script>
-    function deleteAlert() {
-        confirm("本当に削除しますか？");
-    }
-</script>
 <form method="post">
     {% csrf_token %}
     <p>"{{ schedule.title }}"を削除してもよろしいですか?</p>
-    <input type="submit" value="削除" onclick="deleteAlert()">
+    <input type="submit" value="削除" onclick="return confirm('本当に削除しますか？')">
 </form>
 
 {% endblock %}
