@@ -7,13 +7,16 @@
     {{ form.as_p }}
     <input type="submit" value="送信">
 </form>
+<hr>
 <!--チャット表示-->
 {% for chat in chat_list %}
 <div>
     {{ chat.created_at | date:'Y/m/d G:i:s' }}
     [{{ chat.user }}]
-    {{ chat.groups }}
     <p>{{ chat.comment | linebreaksbr | urlize }}</p>
+    {% if chat.image %}
+        <img src="{{ chat.image.url }}">
+    {% endif %}
 </div>
 <hr>
 {% endfor %}

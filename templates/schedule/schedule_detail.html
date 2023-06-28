@@ -3,33 +3,34 @@
 {% block content %}
 <h1>タイムスケジュール</h1>
 <h2>旅行名：{{ schedule.title }}</h2>
-<a href="{% url 'chat:chat_top' schedule.pk %}">チャット</a>
-期間：
+<p>期間：
 {{ schedule.duration_begin | date:"m/d" }} ~
-{{ schedule.duration_end | date:"m/d" }}
+{{ schedule.duration_end | date:"m/d" }}</p>
 <p>合計予算：{{ total_budget }} 円</p>
-
 <a href="{% url 'schedule:plan_create' schedule.pk %}">プランの追加</a>
+<a href="{% url 'chat:chat_top' schedule.pk %}" target="_blank" rel="noopener noreferrer">チャット</a>
 <hr>
-{% for plan in schedule.plan_set.all %}
-    <ul>
-        <li>
-            <div>
-                <p>{{ plan.datetime | date:"m/d H:i" }}</p>
-                <p>{{ plan.place | urlize }}</p>
-                <p>{{ plan.title }}</p>
-                {% if plan.image %}
-                    <img src="{{ plan.image.url }}">
-                {% endif %}
-                <p>{{ plan.budget }} 円</p>
-                {% if plan.memo %}
-                    <p>{{ plan.memo | linebreaksbr | urlize }}</p>
-                {% endif %}
-            </div>
-        </li>
-    </ul>
-<a href="{% url 'schedule:plan_update' plan.pk %}">更新</a>
-<a href="{% url 'schedule:plan_delete' plan.pk %}">削除</a>
-<hr>
-{% endfor %}
+<div>
+    {% for plan in schedule.plan_set.all %}
+        <ul>
+            <li>
+                <div>
+                    <p>{{ plan.datetime | date:"m/d H:i" }}</p>
+                    <p>{{ plan.place | urlize }}</p>
+                    <p>{{ plan.title }}</p>
+                    {% if plan.image %}
+                        <img src="{{ plan.image.url }}">
+                    {% endif %}
+                    <p>{{ plan.budget }} 円</p>
+                    {% if plan.memo %}
+                        <p>{{ plan.memo | linebreaksbr | urlize }}</p>
+                    {% endif %}
+                </div>
+            </li>
+        </ul>
+    <a href="{% url 'schedule:plan_update' plan.pk %}">更新</a>
+    <a href="{% url 'schedule:plan_delete' plan.pk %}">削除</a>
+    <hr>
+    {% endfor %}
+</div>
 {% endblock %}

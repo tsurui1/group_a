@@ -9,6 +9,7 @@ class Chat(models.Model):
     user       = models.ForeignKey(CustomUser, related_name='chat_users', on_delete=models.CASCADE, null=True, blank=True)
     comment    = models.TextField('コメント')
     created_at = models.DateTimeField('作成日', default=timezone.now)
+    image      = models.ImageField('画像', null=True, blank=True, upload_to='chat_images/')
 
     def __str__(self):
         return self.comment

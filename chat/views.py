@@ -1,9 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.views import generic
-from django.urls import reverse_lazy
-from django.db.models import Q
 from .models import Chat
-from accounts.models import CustomUser
 from schedule.models import Schedule
 from .forms import ChatForm
 

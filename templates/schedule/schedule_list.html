@@ -1,27 +1,31 @@
 {% extends 'schedule/base.html' %}
 
 {% block content %}
-<h1>マイページ</h1>
-{% if request.user.bio %}
-  <img width="300" src="{{ user.bio.url }}" />
-{% else %}
-  <img width="300" src="/media/accounts_images/user.png">
-{% endif %}
-{{ user.username }}
-<p><a href="{% url 'accounts:my_page_update' %}">マイページを編集する</a></p>
-<hr>
-<h2>所属するスケジュールリスト</h2>
-<a href="{% url 'schedule:schedule_create' %}">追加</a>
-<hr>
-{% for schedule in schedule_list %}
-    <h3><a href="{% url 'schedule:schedule_detail' schedule.pk %}">旅行名：{{ schedule.title }}</a></h3>
-    期間：
-    {{ schedule.duration_begin | date:"m/d" }} ~
-    {{ schedule.duration_end | date:"m/d" }}
-    <p>合計予算：{{ schedule.sum }} 円</p>
-<a href="{% url 'schedule:schedule_update' schedule.pk %}">更新</a>
-<a href="{% url 'schedule:schedule_delete' schedule.pk %}">削除</a>
-<hr>
-{% endfor %}
+<div>
+    <h1>マイページ</h1>
+    {% if request.user.bio %}
+        <img width="300" src="{{ user.bio.url }}" />
+    {% else %}
+        <img width="300" src="/media/accounts_images/user.png">
+    {% endif %}
+    <p>{{ user.username }}</p>
+    <p><a href="{% url 'accounts:my_page_update' %}">マイページを編集する</a></p>
+    <hr>
+</div>
+<div>
+    <h2>所属するスケジュールリスト</h2>
+    <a href="{% url 'schedule:schedule_create' %}">追加</a>
+    <hr>
+</div>
+<div>
+    {% for schedule in schedule_list %}
+        <h3><a href="{% url 'schedule:schedule_detail' schedule.pk %}">旅行名：{{ schedule.title }}</a></h3>
+        <p>期間：{{ schedule.duration_begin | date:"m/d" }} ~ {{ schedule.duration_end | date:"m/d" }}</p>
+        <p>予算：{{ schedule.sum }} 円</p>
+        <a href="{% url 'schedule:schedule_update' schedule.pk %}">更新</a>
+        <a href="{% url 'schedule:schedule_delete' schedule.pk %}">削除</a>
+        <hr>
+    {% endfor %}
+</div>
 {% endblock %}
 

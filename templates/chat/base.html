@@ -20,6 +20,11 @@
     {% else %}
         <a href="{% url 'accounts:login' %}">ログイン</a>
     {% endif %}
+    <p>Welcome！
+        {% if request.user.is_authenticated %}
+            {{ user.username }} さん
+        {% endif %}
+    </p>
 </nav>
 {% block content %}{% endblock %}
 </body>
