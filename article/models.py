@@ -18,7 +18,7 @@ class Article(models.Model):
     date_begin = models.DateField('掲載開始日', blank=True, null=True)
     date_end = models.DateField('掲載終了日', blank=True, null=True)
     state_flag = models.BooleanField('表示状況', default=True)
-    categories = models.ManyToManyField(Category, blank=True, null=True)
+    categories = models.ManyToManyField(Category, blank=True)
     created_at = models.DateTimeField('作成日', default=timezone.now)
 
     def __str__(self):
