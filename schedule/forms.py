@@ -3,9 +3,10 @@ from .models import Schedule, Plan
 
 
 class ScheduleForm(forms.ModelForm):
+    categories = forms.CharField(label='カテゴリ', required=False)
     class Meta:
         model = Schedule
-        fields = ('title', 'duration_begin', 'duration_end', 'users')
+        fields = ('title', 'duration_begin', 'duration_end', 'users',  'categories')
         widgets = {
             'duration_begin': forms.NumberInput(attrs={
                 "type": "date"
@@ -17,7 +18,6 @@ class ScheduleForm(forms.ModelForm):
 
 
 class PlanForm(forms.ModelForm):
-    categories = forms.CharField(label='カテゴリ', required=False)
     datetime = forms.SplitDateTimeField(
         label='日時',
         required=False,
@@ -26,6 +26,6 @@ class PlanForm(forms.ModelForm):
 
     class Meta:
         model = Plan
-        fields = ('datetime', 'image', 'place', 'budget', 'memo', 'categories')
+        fields = ('datetime', 'image', 'place', 'budget', 'memo')
 
 

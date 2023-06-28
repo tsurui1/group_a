@@ -16,11 +16,11 @@ class ArticleListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = SearchForm
-        category_list = Schedule.categories.through.objects.all().values_list('category_id', flat=True)
-        category_list = Category.objects.filter(id__in=category_list)
-        context['category_list'] = category_list
-
-        print(category_list)
+        if self.request.user.is_authenticated:
+            schedule_list = Schedule.objects.filter(users=self.request.user).values_list('id', flat=True)
+            category_list = Schedule.categories.through.objects.filter(schedule_id__in=schedule_list).values_list('category_id', flat=True)
+            category_list = Category.objects.filter(id__in=category_list)
+            context['category_list'] = category_list
 
         return context
 
