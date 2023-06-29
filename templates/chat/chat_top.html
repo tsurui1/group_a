@@ -8,6 +8,7 @@
     <input type="submit" value="送信">
 </form>
 <hr>
+<div class="chat_area">
 <!--チャット表示-->
 {% for chat in chat_list %}
     [{{ chat.user }}]
@@ -20,4 +21,5 @@
 </div>
 {% endfor %}
 <!--/チャット表示-->
+</div>
 {% endblock %}

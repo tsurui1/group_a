@@ -138,3 +138,9 @@ img {
     border: solid 3px #1e90ff;/*線*/
     border-radius: 10px;/*角の丸み*/
 }
+.ellipsis {
+    width: 220px; /* 省略せずに表示するサイズを指定 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

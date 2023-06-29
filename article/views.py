@@ -15,7 +15,7 @@ class ArticleListView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = SearchForm
+        context['form'] = SearchForm(self.request.GET)
         if self.request.user.is_authenticated:
             schedule_list = Schedule.objects.filter(users=self.request.user).values_list('id', flat=True)
             category_list = Schedule.categories.through.objects.filter(schedule_id__in=schedule_list).values_list('category_id', flat=True)
@@ -38,6 +38,7 @@ class ArticleListView(generic.ListView):
                 Q(categories__name__icontains=keyword)
             )
         return queryset
+
 
 class ArticleCreateView(generic.CreateView):
     model = Article
@@ -80,10 +81,10 @@ class ArticleCreateView(generic.CreateView):
         return redirect('article:article_list')
 
 
-
 class ArticleDetailView(generic.DetailView):
     model = Article
     template_name = 'article/article_detail.html'
+
 
 class ArticleUpdateView(generic.UpdateView):
     model = Article
@@ -127,6 +128,7 @@ class ArticleUpdateView(generic.UpdateView):
         initial_dict = {'categories': categories}
         return initial_dict
 
+
 class ArticleDeleteView(generic.DeleteView):
     model = Article
     template_name = 'article/article_delete.html'
@@ -136,6 +138,7 @@ class ArticleDeleteView(generic.DeleteView):
         if not request.user.is_staff:
             return redirect("accounts:login")
         return super().get(request, *args, **kwargs)
+
 
 class ManagementListView(generic.ListView):
     model = Article

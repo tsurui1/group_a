@@ -41,25 +41,29 @@ nav ul li{
 
 
 /* チャット表示エリア */
+.chat_area{
+    padding: 20px;
+    background: #c2e1f5;
+}
 /* 本文のスタイル */
 .talk_content{
-  display: block;
-  position: relative;
-  margin: 0 0 20px 65px;
-  padding: 10px;
-  max-width: 250px;
-  border-radius: 12px;
-  background: #c2e1f5;
+    display: block;
+    position: relative;
+    margin: 0 0 20px 65px;
+    padding: 15px;
+    max-width: 250px;
+    border-radius: 12px;
+    background: #fff;
 }
 /* 吹き出しのスタイル */
 .talk_content:after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 3px;
-  left: -19px;
-  border: 8px solid transparent;
-  border-right: 18px solid #c2e1f5;
-  -webkit-transform: rotate(35deg);
-  transform: rotate(35deg);
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid #fff;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
 }
