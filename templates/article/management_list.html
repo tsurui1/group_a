@@ -2,24 +2,29 @@
 
 {% block content %}
 
-<p><a href="{% url 'article:article_create' %}">作成</a></p>
+<h1>運営記事一覧</h1>
 
-<div>
-    <h1>運営記事一覧</h1>
+<div class="all_article">
+    作成した記事一覧
+    <a class="btn" href="{% url 'article:article_create' %}">＋</a>
+</div>
 
+<div class="box">
     {% for article in article_list %}
+    <div class="item">
             <a href="{% url 'article:article_detail' article.id %}">
-                <img width="300" src="{{ article.image.url }}" />
+                <img height="140px" src="{{ article.image.url }}" />
             </a>
             <div>
                 {{ article.title }}
-                /<a href="{% url 'article:article_update' article.id %}">更新</a>
-                /<a href="{% url 'article:article_delete' article.id %}">削除</a>
+                /<a class="link_color" href="{% url 'article:article_update' article.id %}">更新</a>
+                /<a class="link_color" href="{% url 'article:article_delete' article.id %}">削除</a>
             </div>
+    </div>
     {% endfor %}
 </div>
 
-<div>
+<div align="center">
     {% if page_obj.has_previous %}
         <a href="?page={{ page_obj.previous_page_number }}">前のページへ</a>
     {% endif %}

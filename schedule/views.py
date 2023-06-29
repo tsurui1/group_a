@@ -41,6 +41,8 @@ class ScheduleCreateView(generic.CreateView):
 
         schedule.save()
 
+        form.save_m2m()
+
         for category in category_list:
             print(category)
             if Category.objects.filter(name=category).exists():
@@ -67,6 +69,7 @@ class ScheduleUpdateView(generic.UpdateView):
         category_list = category.split(',')
 
         schedule.save()
+        form.save_m2m()
 
         for category in category_list:
             print(category)

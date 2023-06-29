@@ -4,17 +4,20 @@
 <h1>記事一覧</h1>
 
 <form method="GET">
+    <div class="form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">送信</button>
+    </div>
+    <button class="form" type="submit">送信</button>
 </form>
 
+<br class="none">
 <div class="box">
         {% for article in article_list %}
             <div class="item">
                 {% if article.state_flag %}
                     <a href="{% url 'article:article_detail' article.id %}">
-                        <img width="300" src="{{ article.image.url }}" />
+                        <img class="top_img" src="{{ article.image.url }}" />
                     </a>
                     <div>
                         {{ article.title }}
@@ -24,7 +27,7 @@
         {% endfor %}
 </div>
 
-<div>
+<div align="center">
     {% if page_obj.has_previous %}
         <a href="?page={{ page_obj.previous_page_number }}">前のページへ</a>
     {% endif %}
@@ -56,7 +59,7 @@
                 {% if article.state_flag %}
                 <div class="item">
                     <a href="{% url 'article:article_detail' article.id %}">
-                        <img width="300" src="{{ article.image.url }}" />
+                        <img class="top_img" src="{{ article.image.url }}" />
                     </a>
                     <div>
                         {{ article.title }}
@@ -68,7 +71,7 @@
 
     {% endfor %}
 
-    <div>
+    <div align="center">
         {% if page_obj.has_previous %}
             <a href="?page={{ page_obj.previous_page_number }}">前のページへ</a>
         {% endif %}
