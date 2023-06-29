@@ -15,7 +15,7 @@
             <a href="{% url 'article:article_detail' article.id %}">
                 <img height="140px" src="{{ article.image.url }}" />
             </a>
-            <div>
+            <div class="ellipsis">
                 {{ article.title }}
                 /<a class="link_color" href="{% url 'article:article_update' article.id %}">更新</a>
                 /<a class="link_color" href="{% url 'article:article_delete' article.id %}">削除</a>
