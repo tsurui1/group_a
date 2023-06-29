@@ -4,8 +4,11 @@
 <h2>{{ plan.place }}プラン更新ページ</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" id="save" value="更新">
+    <table class="create_table">
+        {{ form.as_table }}
+    </table>
+    <div class="button_center">
+        <input type="submit" id="save" value="更新">
+    </div>
 </form>
-
 {% endblock %}

@@ -1,10 +1,17 @@
 {% extends 'accounts/base_account.html' %}
 
 {% block content %}
-<h2>運営アカウント：ログイン</h2>
+<h1>運営アカウント：ログイン</h1>
 <form method="post" action="">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" id="save" value="ログイン">
+    <table class="create_table">
+        {{ form.as_table }}
+    </table>
+    <div class="button_center">
+        <input type="submit" id="save" value="ログイン">
+    </div>
 </form>
+<div class="accounts_new_create">
+    <p>運営アカウント <a href="{% url 'accounts:management_create' %}">新規作成</a></p>
+</div>
 {% endblock %}

@@ -52,11 +52,16 @@ class MyPageUpdateView(generic.UpdateView):
     def get_object(self):
         return self.request.user
 
+
 class ManagementUserCreateView(generic.CreateView):
     model = CustomUser
     form_class = ManagementUserForm
     template_name = 'accounts/management_create.html'
     next_page = reverse_lazy('article:management_list')
+
+    def form_valid(self, form):
+        messages.info(self.request, '運営アカウントを作成しました')
+        return super().form_valid(form)
 
 class ManagementUserLoginView(LoginView):
     template_name = 'accounts/management_login.html'

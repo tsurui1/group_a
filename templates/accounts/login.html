@@ -12,6 +12,7 @@
     </div>
 </form>
 <div class="accounts_new_create">
-    <a href="{% url 'accounts:accounts_create' %}">新規作成</a>
+    <p><a href="{% url 'accounts:accounts_create' %}">新規作成</a></p>
+    <p>運営サイトへのログインは<a href="{% url 'accounts:management_login' %}">こちら</a>から</p>
 </div>
 {% endblock %}

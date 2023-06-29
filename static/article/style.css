@@ -33,7 +33,6 @@ img {
 /* フォーム */
 #form form{
     margin: auto;
-    width: 50%;
     border-radius: 10px;
     border: solid 3px #1e90ff;/*線*/
 }
