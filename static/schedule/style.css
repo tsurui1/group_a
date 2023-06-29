@@ -29,6 +29,49 @@ nav ul li{
     width: 80%;
     margin: auto;
 }
+
+/* フォーム */
+form{
+    margin: auto;
+    width: 50%;
+    border-radius: 10px;
+    border: solid 3px #1e90ff;/*線*/
+}
+input, textarea, select{
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+}
+input:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+textarea:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+select:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+.create_table {
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+}
+.create_table th{
+    padding: 10px;
+    color: #1e90ff;
+}
+.create_table td{
+    padding: 10px;
+    width: 50%;
+}
+.button_center{
+    text-align: center;
+}
+
 /* マイページ */
 .user_img{
     width: 150px;
@@ -50,4 +93,51 @@ nav ul li{
     background: #FFF;
     border: solid 3px #1e90ff;/*線*/
     border-radius: 10px;/*角の丸み*/
+}
+
+/* タイムスケジュール */
+.wrapper{
+    margin: auto;
+    box-sizing: border-box;
+}
+.time_schedule{
+    position: relative;
+}
+.time_line {
+    width: 4px;/*線の太さ*/
+    height: 95%;/*線の下のはみ出しを消してる*/
+    position: absolute;
+    top: 0;
+    left: 20%;
+    z-index: 999;/*重なり順*/
+    transform: translateX(-50%);
+    padding-top: 25px;/*線の上のはみ出しを消してる*/
+}
+.time_line span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #1e90ff;/*線の色*/
+}
+.time_ball{
+    position: absolute;
+    background: #1e90ff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    left: 20%;
+    z-index: 999;
+}
+dl{
+    padding: 20px 0;
+}
+dl dt{
+    width: 100%;
+    position: absolute;
+}
+dl dd{
+    width: 60%;
+    margin-left: 25%;
 }

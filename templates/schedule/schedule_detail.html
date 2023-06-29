@@ -10,27 +10,29 @@
 <a href="{% url 'schedule:plan_create' schedule.pk %}">プランの追加</a>
 <a href="{% url 'chat:chat_top' schedule.pk %}" target="_blank" rel="noopener noreferrer">チャット</a>
 <hr>
-<div>
+<div class="wrapper">
+    <div class="time_schedule">
     {% for plan in schedule.plan_set.all %}
-        <ul>
-            <li>
-                <div>
-                    <p>{{ plan.datetime | date:"m/d H:i" }}</p>
-                    <p>{{ plan.place | urlize }}</p>
-                    <p>{{ plan.title }}</p>
+        <div class="time_line"><span></span></div>
+            <dl>
+                <dt>{{ plan.datetime | date:"m/d H:i" }}<span class="time_ball"></span></dt>
+                <dd>{{ plan.place | urlize }}</dd>
+                <dd>
                     {% if plan.image %}
                         <img src="{{ plan.image.url }}">
-                    {% endif %}
-                    <p>{{ plan.budget }} 円</p>
+                    {% endif %}</dd>
+                <dd>{{ plan.budget }} 円</dd>
+                <dd>
                     {% if plan.memo %}
-                        <p>{{ plan.memo | linebreaksbr | urlize }}</p>
+                        {{ plan.memo | linebreaksbr | urlize }}
                     {% endif %}
-                </div>
-            </li>
-        </ul>
-    <a href="{% url 'schedule:plan_update' plan.pk %}">更新</a>
-    <a href="{% url 'schedule:plan_delete' plan.pk %}">削除</a>
-    <hr>
+                </dd>
+                <dd>
+                    <a href="{% url 'schedule:plan_update' plan.pk %}">更新</a>
+                    <a href="{% url 'schedule:plan_delete' plan.pk %}">削除</a>
+                </dd>
+            </dl>
+
     {% endfor %}
 </div>
 {% endblock %}
