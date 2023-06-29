@@ -44,7 +44,7 @@ class ArticleCreateView(generic.CreateView):
     model = Article
     form_class = ArticleForm
     template_name = 'article/article_create.html'
-    success_url = reverse_lazy('article:article_list')
+    success_url = reverse_lazy('article:management_list')
 
     def get(self, request):
         if not request.user.is_staff:
@@ -78,7 +78,7 @@ class ArticleCreateView(generic.CreateView):
                     add_category = Category.objects.create(name=category)
                     article.categories.add(add_category)
 
-        return redirect('article:article_list')
+        return redirect('article:management_list')
 
 
 class ArticleDetailView(generic.DetailView):
@@ -132,7 +132,7 @@ class ArticleUpdateView(generic.UpdateView):
 class ArticleDeleteView(generic.DeleteView):
     model = Article
     template_name = 'article/article_delete.html'
-    success_url = reverse_lazy('article:article_list')
+    success_url = reverse_lazy('article:management_list')
 
     def get(self, request, *args, **kwargs):
         if not request.user.is_staff:
