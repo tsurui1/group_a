@@ -4,7 +4,14 @@
 <h1>ログイン</h1>
 <form method="post" action="">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" id="save" value="ログイン">
+    <table class="create_table">
+        {{ form.as_table }}
+    </table>
+    <div class="button_center">
+        <input type="submit" id="save" value="ログイン">
+    </div>
 </form>
+<div class="accounts_new_create">
+    <a href="{% url 'accounts:accounts_create' %}">新規作成</a>
+</div>
 {% endblock %}

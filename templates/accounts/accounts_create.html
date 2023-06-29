@@ -2,10 +2,13 @@
 {% block content %}
 
 <h1>新規登録</h1>
-    <form method="POST">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" id="save" value="作成">
-    </form>
-
+<form method="POST" class="accounts_create">
+    {% csrf_token %}
+    <table class="accounts_create_table">
+        {{ form.as_table }}
+    </table>
+    <div class="button_center">
+        <input type="submit" id="save" value="作成">
+    </div>
+</form>
 {% endblock %}
