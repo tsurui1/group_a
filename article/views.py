@@ -91,10 +91,10 @@ class ArticleUpdateView(generic.UpdateView):
     template_name = 'article/article_update.html'
     success_url = reverse_lazy('article:management_list')
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         if not request.user.is_staff:
             return redirect("accounts:login")
-        return super().get(request)
+        return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
         article = form.save(commit=False)
@@ -132,10 +132,10 @@ class ArticleDeleteView(generic.DeleteView):
     template_name = 'article/article_delete.html'
     success_url = reverse_lazy('article:article_list')
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         if not request.user.is_staff:
             return redirect("accounts:login")
-        return super().get(request)
+        return super().get(request, *args, **kwargs)
 
 class ManagementListView(generic.ListView):
     model = Article

@@ -2,12 +2,19 @@
  
 {% block content %}
 <h1>更新</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" id="save" value="更新">
-</form>
+<div id="form">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="create_table">
+            {{ form.as_table }}
+        </table>
+        <div class="button_center">
+            <input type="submit" id="save" value="更新">
+        </div>
+    </form>
+</div>
 
-<p><a href="{% url 'article:article_detail' article.id %}">戻る</a></p>
+<hr class="none">
+<p><a class="link_color" href="{% url 'article:management_list' %}">戻る</a></p>
  
 {% endblock %}
