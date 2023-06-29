@@ -36,7 +36,7 @@ class ArticleListView(generic.ListView):
             queryset = queryset.filter(
                 Q(title__icontains=keyword) | Q(text__icontains=keyword) |
                 Q(categories__name__icontains=keyword)
-            )
+            ).distinct()
         return queryset
 
 
