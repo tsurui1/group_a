@@ -96,7 +96,7 @@ select:focus {
     padding: 20px;
     text-align: center;
 }
-
+/* メッセージ */
 #toast {
     display: flex;
     height: 60px;

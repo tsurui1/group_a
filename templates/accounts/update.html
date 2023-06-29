@@ -1,11 +1,14 @@
 {% extends 'accounts/base_account.html' %}
  
 {% block content %}
-<h2>更新</h2>
-<form method="post" enctype="multipart/form-data">
+<h2>ユーザー情報の更新</h2>
+<form method="post" enctype="multipart/form-data" class="accounts_create">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" id="save" value="更新">
+    <table class="accounts_create_table">
+        {{ form.as_table }}
+    </table>
+    <div class="button_center">
+        <input type="submit" id="save" value="更新">
+    </div>
 </form>
- 
 {% endblock %}
