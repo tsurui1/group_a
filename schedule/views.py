@@ -22,6 +22,7 @@ class ScheduleListView(generic.ListView):
         queryset = queryset.filter(users=self.request.user).order_by('duration_begin')
         return queryset
 
+
 class ScheduleCreateView(generic.CreateView):
     model = Schedule
     form_class = ScheduleForm

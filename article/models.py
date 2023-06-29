@@ -9,11 +9,12 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Article(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True, null=True)
 
     title = models.CharField('タイトル', max_length=100)
-    image = models.ImageField('画像', upload_to='article_images/')
+    image = models.ImageField('画像', upload_to='article_images/', default='article_images/default_img.png')
     text = models.TextField('テキスト')
     date_begin = models.DateField('掲載開始日', blank=True, null=True)
     date_end = models.DateField('掲載終了日', blank=True, null=True)
