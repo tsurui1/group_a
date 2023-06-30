@@ -52,7 +52,9 @@
     <h2>{{ request.user.username }}さんへのおすすめ記事</h2>
 
     {% for category in category_list %}
+    <div class="category">
         <p>{{ category }}</p>
+    </div>
 
         <div class="box">
             {% for article in category.article_set.all %}

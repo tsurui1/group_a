@@ -143,3 +143,7 @@ img {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.category{
+    font-weight: bold;
+    color: #1e90ff;/*文字色*/
+}
